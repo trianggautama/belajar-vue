@@ -3,14 +3,13 @@
 <div>
     <form @submit.prevent="createUser" type="post">
         <div class="form-group">
-            <input class="form-control" type="text" v-model="barang.nama_barang" placeholder="name">
+            <input class="form-control" type="text"  placeholder="nama barang">
         </div>
         <div class="form-group">
-             <input class="form-control" type="text" v-model="barang.kuantitas" placeholder="email">
+             <input class="form-control" type="text"  placeholder="kuantitas">
         </div>
         <div class="form-group">
-            <button v-if="add" @click.prevent="addbarang()" class="btn btn-sm btn-outline-success">Simpan</button>
-            <button v-if="edit" @click.prevent="ubahbarang(barang.id)" class="btn btn-sm btn-outline-success">Simpan</button>
+            <button class="btn btn-sm btn-outline-success">Simpan</button>
 
         </div>
     </form>
@@ -22,13 +21,13 @@
                             <th class="text-center">action</th>
                         </thead>
                         <tbody>
-                            <tr  v-for=" barang in barangs   ">
+                            <tr v-for="barang in barangs" >
                                 <td>{{barang.nama_barang}}</td>
                                 <td>{{barang.kuantitas}}</td>
                                 <td class="text-center">
-                                    <button @click="detailbarang(barang)" class="button btn btn-sm btn-outline-secondary"> detail</button>
-                                    <button @click="ubahbarang(barang)" class="button btn btn-sm btn-outline-primary"> ubah</button>
-                                    <button @click="hapusbarang(barang)" class="button btn btn-sm btn-outline-danger" onclick="return confirm('Anda yakin akan menghapus data ?')">hapus </button>
+                                    <button class="button btn btn-sm btn-outline-secondary"> detail</button>
+                                    <button class="button btn btn-sm btn-outline-primary"> ubah</button>
+                                    <button class="button btn btn-sm btn-outline-danger" onclick="return confirm('Anda yakin akan menghapus data ?')">hapus </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -41,45 +40,30 @@
 
 <script>
     export default {
-        props: ['barangs'],
         data: function() { 
             return {
-                barang:{
-                    nama_barang:'',
-                    kuantitas:'',
-                },
-                add:true,
-                edit:false
+              barangs:[]
             }
         },
-        created(){
-            this.viewbarang();
+         mounted() {
+         this.viewbarang();
         },
-        method: {
-            viewbarang(){
-
-            },
-            addbarang(){
-
-            },
-            editbarang(){
-
-            },
-            ubahbarang(){
-
-            },
-            hapusbarang(){
-
+        methods: {
+           viewbarang(){
+              //  axios.get('/api/barangs').then(response=>{
+                //    console.log(response)
+               // })
+               axios({
+                   method: 'get',
+                   url:'/api/barangs',
+               }).then((response)=>{
+                  this.barangs = response.data
+               })
             }
-
-        },
-        mounted: function() {
-          axios({
-              method: 'get',
-              url:'/api/barangs',
-          }).then((response)=>{
-               this.barangs = response.data
-          })
+           
         }
+          
+        
+     
     }
 </script>

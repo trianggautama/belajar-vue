@@ -46,5 +46,10 @@ class HomeController extends Controller
         
         return response(barang::all());
     }
+    public function add_barangs(){
+        
+      dd('success');
+    }
+    
 
 }

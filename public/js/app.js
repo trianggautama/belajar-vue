@@ -47793,41 +47793,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['barangs'],
-    data: function data() {
-        return {
-            barang: {
-                nama_barang: '',
-                kuantitas: ''
-            },
-            add: true,
-            edit: false
-        };
-    },
-    created: function created() {
-        this.viewbarang();
-    },
+   data: function data() {
+      return {
+         barangs: []
+      };
+   },
+   mounted: function mounted() {
+      this.viewbarang();
+   },
 
-    method: {
-        viewbarang: function viewbarang() {},
-        addbarang: function addbarang() {},
-        editbarang: function editbarang() {},
-        ubahbarang: function ubahbarang() {},
-        hapusbarang: function hapusbarang() {}
-    },
-    mounted: function mounted() {
-        var _this = this;
+   methods: {
+      viewbarang: function viewbarang() {
+         var _this = this;
 
-        axios({
+         //  axios.get('/api/barangs').then(response=>{
+         //    console.log(response)
+         // })
+         axios({
             method: 'get',
             url: '/api/barangs'
-        }).then(function (response) {
+         }).then(function (response) {
             _this.barangs = response.data;
-        });
-    }
+         });
+      }
+   }
+
 });
 
 /***/ }),
@@ -47851,94 +47843,12 @@ var render = function() {
             }
           }
         },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.barang.nama_barang,
-                  expression: "barang.nama_barang"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "name" },
-              domProps: { value: _vm.barang.nama_barang },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.barang, "nama_barang", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.barang.kuantitas,
-                  expression: "barang.kuantitas"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "email" },
-              domProps: { value: _vm.barang.kuantitas },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.barang, "kuantitas", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _vm.add
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-outline-success",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.addbarang()
-                      }
-                    }
-                  },
-                  [_vm._v("Simpan")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.edit
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-outline-success",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.ubahbarang(_vm.barang.id)
-                      }
-                    }
-                  },
-                  [_vm._v("Simpan")]
-                )
-              : _vm._e()
-          ])
-        ]
+        [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]
       )
     ]),
     _vm._v(" "),
     _c("table", { staticClass: "table table-hover" }, [
-      _vm._m(0),
+      _vm._m(3),
       _vm._v(" "),
       _c(
         "tbody",
@@ -47948,50 +47858,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(barang.kuantitas))]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "button btn btn-sm btn-outline-secondary",
-                  on: {
-                    click: function($event) {
-                      _vm.detailbarang(barang)
-                    }
-                  }
-                },
-                [_vm._v(" detail")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "button btn btn-sm btn-outline-primary",
-                  on: {
-                    click: function($event) {
-                      _vm.ubahbarang(barang)
-                    }
-                  }
-                },
-                [_vm._v(" ubah")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "button btn btn-sm btn-outline-danger",
-                  attrs: {
-                    onclick:
-                      "return confirm('Anda yakin akan menghapus data ?')"
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.hapusbarang(barang)
-                    }
-                  }
-                },
-                [_vm._v("hapus ")]
-              )
-            ])
+            _vm._m(4, true)
           ])
         })
       )
@@ -48003,12 +47870,69 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "nama barang" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "kuantitas" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("button", { staticClass: "btn btn-sm btn-outline-success" }, [
+        _vm._v("Simpan")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("th", [_vm._v("nama")]),
       _vm._v(" "),
       _c("th", [_vm._v("kuantitas")]),
       _vm._v(" "),
       _c("th", { staticClass: "text-center" }, [_vm._v("action")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center" }, [
+      _c("button", { staticClass: "button btn btn-sm btn-outline-secondary" }, [
+        _vm._v(" detail")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "button btn btn-sm btn-outline-primary" }, [
+        _vm._v(" ubah")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "button btn btn-sm btn-outline-danger",
+          attrs: {
+            onclick: "return confirm('Anda yakin akan menghapus data ?')"
+          }
+        },
+        [_vm._v("hapus ")]
+      )
     ])
   }
 ]

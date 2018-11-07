@@ -24,3 +24,5 @@ Route::get('/api/users', 'HomeController@get_users');
 
 Route::get('/barangs', 'HomeController@show_barangs')->name('barangs');
 Route::get('/api/barangs', 'HomeController@get_barangs');
+Route::post('/barangs', 'HomeController@add_barangs')->name('tambah barang');
+
