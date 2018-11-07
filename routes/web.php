@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users', 'HomeController@show_users')->name('users');
 Route::get('/api/users', 'HomeController@get_users');
+
+Route::get('/barangs', 'HomeController@show_barangs')->name('barangs');
+Route::get('/api/barangs', 'HomeController@get_barangs');

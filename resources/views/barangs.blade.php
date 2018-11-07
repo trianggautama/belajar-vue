@@ -11,9 +11,9 @@
 
                 <div class="card-body">
                   
-               <users>
+               <barangs>
 
-               </users>
+               </barangs>
 
                 </div>
             </div>

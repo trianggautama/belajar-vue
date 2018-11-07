@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\barang;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,6 +35,16 @@ class HomeController extends Controller
     public function get_users(){
         
         return response(User::all());
+    }
+
+    
+    public function show_barangs(){
+        return view('barangs',['barangs'=>barang::all() ]);
+    }
+
+    public function get_barangs(){
+        
+        return response(barang::all());
     }
 
 }
